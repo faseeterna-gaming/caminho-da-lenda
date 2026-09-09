@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Caminho da Lenda — Guia Legend</title>
+<meta name="description" content="Um guia organizado de progressão da classe Legend em Echoes of Morroc." />
+<style>
+  :root{
+    --bg:#090909; --panel:#101010; --panel2:#151515; --line:#262626;
+    --text:#f4efe8; --muted:#aaa39a; --red:#e5483f; --amber:#d5a649; --green:#62b276;
+    --blue:#79a9d7; --radius:18px; --shadow:0 24px 80px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;background:radial-gradient(circle at 70% 0%,#22130f 0,transparent 25%),var(--bg);color:var(--text);font:15px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+  a{color:inherit;text-decoration:none} img{max-width:100%;display:block}
+  .shell{display:grid;grid-template-columns:280px minmax(0,1fr);min-height:100vh}
+  aside{position:sticky;top:0;height:100vh;border-right:1px solid var(--line);padding:26px 22px;background:rgba(8,8,8,.92);backdrop-filter:blur(20px);overflow:auto}
+  .brand{display:flex;gap:12px;align-items:center;margin-bottom:28px}.sigil{width:42px;height:42px;border:1px solid #4b3324;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,#2b1711,#101010);font-family:Georgia,serif;font-size:22px;color:var(--amber)}
+  .brand strong{display:block;font-family:Georgia,serif;font-size:18px;letter-spacing:.02em}.brand small{color:var(--muted)}
+  nav h4{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#6f6a64;margin:22px 10px 8px}
+  nav a{display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:10px;color:#bcb5ad;margin:2px 0;font-size:13px}nav a:hover,nav a.active{background:#171310;color:#fff}
+  nav .dot{width:6px;height:6px;border-radius:50%;background:#443a33}nav a.active .dot{background:var(--red);box-shadow:0 0 0 4px rgba(229,72,63,.12)}
+  main{min-width:0}.hero{min-height:670px;position:relative;display:flex;align-items:end;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,6,6,.94) 0%,rgba(6,6,6,.73) 42%,rgba(6,6,6,.16) 78%),linear-gradient(0deg,#090909 0%,transparent 42%),url('assets/image105.png') center/cover no-repeat;filter:saturate(.75) contrast(1.05)}
+  .hero-inner{position:relative;max-width:1160px;padding:88px 56px 72px}.eyebrow{display:inline-flex;align-items:center;gap:9px;color:#d9c4a2;font-size:11px;letter-spacing:.18em;text-transform:uppercase;border:1px solid #4a3827;border-radius:999px;padding:7px 11px;background:rgba(18,13,10,.72)}
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif;line-height:1.08;margin:0}.hero h1{font-size:clamp(54px,7vw,94px);max-width:800px;margin:20px 0 20px;font-weight:500;letter-spacing:-.045em}.hero h1 em{color:var(--red);font-style:normal}.hero p{max-width:680px;font-size:18px;color:#c4bdb5}
+  .hero-meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.pill{padding:9px 13px;border:1px solid #332d28;background:rgba(20,18,16,.8);border-radius:999px;color:#c6beb5;font-size:12px}
+  .content{max-width:1180px;padding:0 56px 100px}.section{padding:88px 0 20px;scroll-margin-top:20px}.section-head{display:grid;grid-template-columns:140px 1fr;gap:26px;align-items:start;margin-bottom:34px}.num{font:12px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;color:#776f68;letter-spacing:.16em}.section h2{font-size:42px;font-weight:500;letter-spacing:-.025em}.lede{font-size:17px;color:#bdb5ad;max-width:760px;margin:12px 0 0}
+  .grid{display:grid;gap:16px}.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .card{background:linear-gradient(180deg,#141414,#101010);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}.card h3{font-size:22px;font-weight:500;margin-bottom:8px}.card p,.card li{color:#aaa39a}.card ul{padding-left:18px;margin-bottom:0}
+  .quote{border-left:2px solid var(--red);padding:2px 0 2px 20px;font:italic 24px/1.45 Georgia,serif;color:#e6ded4;margin:28px 0}.quote small{display:block;font:11px/1.4 Inter,sans-serif;color:#8c847b;text-transform:uppercase;letter-spacing:.14em;margin-top:8px}
+  .road{position:relative;padding-left:30px}.road:before{content:"";position:absolute;left:8px;top:8px;bottom:8px;width:1px;background:linear-gradient(var(--red),#4d2f22,#333)}
+  .stop{position:relative;display:grid;grid-template-columns:120px 1fr;gap:20px;padding:0 0 25px}.stop:before{content:"";position:absolute;left:-27px;top:8px;width:9px;height:9px;background:#111;border:2px solid var(--red);border-radius:50%}.stop .lv{font:12px ui-monospace,monospace;color:var(--amber);padding-top:4px}.stop strong{font-size:18px}.stop p{margin:3px 0;color:#97908a}
+  .priority{display:inline-block;font:700 10px/1 Inter,sans-serif;letter-spacing:.08em;border-radius:999px;padding:6px 8px;margin-right:7px}.must{background:rgba(229,72,63,.15);color:#ff7d73;border:1px solid rgba(229,72,63,.35)}.high{background:rgba(213,166,73,.14);color:#e8bd66;border:1px solid rgba(213,166,73,.32)}.opt{background:#171717;color:#aaa;border:1px solid #2d2d2d}
+  .gear{overflow:hidden;padding:0}.gear img{height:170px;width:100%;object-fit:cover;filter:saturate(.85)}.gear .body{padding:18px 20px 20px}.gear .slot{font:10px ui-monospace,monospace;text-transform:uppercase;letter-spacing:.14em;color:#7d746b}.gear h3{font-family:Inter,sans-serif;font-weight:650;font-size:16px;margin:5px 0}.gear p{font-size:13px;margin:0}
+  .check{display:flex;align-items:start;gap:12px;padding:12px 0;border-bottom:1px solid #222}.check:last-child{border:0}.check i{width:19px;height:19px;border-radius:5px;border:1px solid #524336;display:grid;place-items:center;color:var(--amber);font-style:normal;font-size:11px;margin-top:2px}.check span{color:#c8c1b8}.check small{display:block;color:#817a72}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}.stat{padding:24px;background:#111;border-right:1px solid var(--line)}.stat:last-child{border:0}.stat b{font:32px/1 Georgia,serif;color:#fff}.stat span{display:block;color:#817970;font-size:12px;margin-top:7px}.stat.red b{color:#ff7b71}.stat.gold b{color:#e0b760}
+  .danger,.wisdom,.note{border-radius:14px;padding:18px 20px;margin:18px 0;border:1px solid}.danger{background:#1d0f0e;border-color:#4b211d}.wisdom{background:#18140d;border-color:#44351d}.note{background:#10171d;border-color:#223847}.kicker{font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;margin-bottom:5px}.danger .kicker{color:#ff786e}.wisdom .kicker{color:#d9ad52}.note .kicker{color:#83b8e8}
+  .faq details{border-top:1px solid var(--line);padding:18px 0}.faq details:last-child{border-bottom:1px solid var(--line)}.faq summary{cursor:pointer;font:20px/1.35 Georgia,serif;list-style:none}.faq summary::-webkit-details-marker{display:none}.faq summary:after{content:'+';float:right;color:#81786f}.faq details[open] summary:after{content:'–'}.faq p{color:#a9a19a;max-width:760px}
+  .gallery{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px}.gallery img{width:100%;height:220px;object-fit:cover;border-radius:14px;border:1px solid #272727}.gallery img:first-child{grid-row:span 2;height:450px}.gallery img:nth-child(4),.gallery img:nth-child(5){height:220px}
+  table{width:100%;border-collapse:collapse;font-size:13px}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:16px}th,td{text-align:left;padding:14px 16px;border-bottom:1px solid #242424}th{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:#837b73;background:#101010}td{color:#bdb5ad}tr:last-child td{border-bottom:0}
+  .footer{padding:60px 56px;border-top:1px solid var(--line);color:#77706a;font-size:12px}.footer strong{color:#b9b1a9}
+  @media(max-width:900px){.shell{display:block}aside{display:none}.hero-inner,.content,.footer{padding-left:24px;padding-right:24px}.hero{min-height:620px}.section-head{grid-template-columns:1fr;gap:8px}.g2,.g3,.g4{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:0}.gallery{grid-template-columns:1fr 1fr}.gallery img:first-child{grid-row:auto;grid-column:span 2;height:340px}.stop{grid-template-columns:90px 1fr}}
+</style>
+</head>
+<body>
+<div class="shell">
+<aside>
+  <div class="brand"><div class="sigil">L</div><div><strong>Caminho da Lenda</strong><small>Guia da classe Legend</small></div></div>
+  <nav>
+    <h4>Jornada</h4>
+    <a href="#intro" class="active"><span class="dot"></span>Introdução</a>
+    <a href="#laws"><span class="dot"></span>Princípios da Legend</a>
+    <a href="#road"><span class="dot"></span>Rota de Leveling</a>
+    <a href="#legend"><span class="dot"></span>Tornando-se Legend</a>
+    <h4>Build</h4>
+    <a href="#stats"><span class="dot"></span>Filosofia da Build</a>
+    <a href="#gear"><span class="dot"></span>Checkpoints de Equipamentos</a>
+    <a href="#endgame"><span class="dot"></span>Metas de Endgame</a>
+    <a href="#troubleshoot"><span class="dot"></span>Por que estou morrendo?</a>
+    <h4>Referência</h4>
+    <a href="#faq"><span class="dot"></span>FAQ</a>
+  </nav>
+</aside>
+<main>
+<section class="hero" id="intro">
+  <div class="hero-inner">
+    <div class="eyebrow">Echoes of Morroc · Guia de Legend · por Ashura</div>
+    <h1>CAMINHO DA <em>LENDA</em></h1>
+    <p>Um guia visual de progressão para quem quer se tornar Legend — de Orphan ao endgame, sem fingir que existe uma única build perfeita.</p>
+    <div class="hero-meta"><span class="pill">1x recomendado</span><span class="pill">Lv 1 → 150</span><span class="pill">CRIT · DEF Pierce · Sustain</span><span class="pill">Theorycrafting em primeiro lugar</span></div>
+  </div>
+</section>
+
+<div class="content">
+<section class="section" id="laws">
+  <div class="section-head"><div class="num">01 / PRINCÍPIOS</div><div><h2>Princípios da Legend</h2><p class="lede">A filosofia central do guia transformada em princípios que você realmente pode aplicar enquanto joga.</p></div></div>
+  <div class="grid g3">
+    <div class="card"><h3>I. Equipamentos importam.</h3><p>Legend depende muito de equipamentos. Se um mapa parecer impossível, apenas ganhar níveis talvez não resolva.</p></div>
+    <div class="card"><h3>II. Use Sense em tudo.</h3><p>Sense é uma das ferramentas mais importantes para descobrir qual monstro realmente dropa o upgrade de que você precisa.</p></div>
+    <div class="card"><h3>III. Não copie atributos.</h3><p>Monte sua build de acordo com o problema atual: dano, CRIT/HIT, sobrevivência ou o consumo de Frenzy.</p></div>
+    <div class="card"><h3>IV. Respeite Reflect.</h3><p>Ignore Damage Reflection pode salvar sua vida em equipamentos importantes da progressão.</p></div>
+    <div class="card"><h3>V. CRIT depende do contexto.</h3><p>Monstros possuem Crit Shield. Ter 100 de CRIT exibido nem sempre significa 100% de CRIT efetivo.</p></div>
+    <div class="card"><h3>VI. Faça theorycraft.</h3><p>O objetivo não é copiar uma lista BIS. É entender por que cada item está na build.</p></div>
+  </div>
+  <div class="quote">“Uma das partes mais importantes de ser Legend é saber montar sua própria build.”<small>E a outra é saber clicar com o botão esquerdo.</small></div>
+</section>
+
+<section class="section" id="road">
+  <div class="section-head"><div class="num">02 / ROTA</div><div><h2>A Rota da Legend</h2><p class="lede">Toda a progressão em uma única visão. Use esta seção como mapa da jornada; os detalhes vêm depois.</p></div></div>
+  <div class="card road">
+    <div class="stop"><div class="lv">LV 1–15</div><div><strong>Orphan · Pyramid Basement</strong><p>Pegue o Orphan Set, o Lost Attire Shadow Set se quiser, o bônus de EXP da Lucy quando disponível e Familiar Cards durante o leveling.</p></div></div>
+    <div class="stop"><div class="lv">LV 15+</div><div><strong>Torne-se Vagabond</strong><p>Deposite seu zeny, fale com o Vagabond NPC e resgate a Dagger of the Orphan no Voucher Exchange.</p></div></div>
+    <div class="stop"><div class="lv">LV 15–22</div><div><strong>Upper Pyramid</strong><p><span class="priority must">MUST</span>Legacy of Coins set + Minorous Card. Equipamento principal até aproximadamente o Lv 80.</p></div></div>
+    <div class="stop"><div class="lv">LV 22–32</div><div><strong>Prontera Culvert / Payon</strong><p>Culvert para progressão. Payon dá menos EXP, mas permite farmar Soldier Skeleton Cards.</p></div></div>
+    <div class="stop"><div class="lv">LV 32–42</div><div><strong>Geffen Cave / Orc Village</strong><p>Farm importante no início para Drainliar Cards e Dracula Manteau / Relics. Pegue Evil Wing Ears o quanto antes.</p></div></div>
+    <div class="stop"><div class="lv">LV 42–63</div><div><strong>Frontier / High Orcs</strong><p>Frontier é a rota mais rápida, mas exige equipamentos melhores. High Orcs é a opção mais segura no início.</p></div></div>
+    <div class="stop"><div class="lv">LV 63–72</div><div><strong>Faceworms</strong><p>Leveling direto. Faceworm Card é uma boa opção caso você ainda não tenha Sleipnir Card.</p></div></div>
+    <div class="stop"><div class="lv">LV 72–87</div><div><strong>Amatsu</strong><p>Comece no Field para conseguir Karakasa Cards; depois siga para o Dungeon até o Lv 87 e o HATred.</p></div></div>
+    <div class="stop"><div class="lv">LV 87–102</div><div><strong>Rachel Sanctuary</strong><p>Chegue ao Job Lv 70. Não junte muitos monstros se sua build ainda não aguenta.</p></div></div>
+    <div class="stop"><div class="lv">LV 102–124</div><div><strong>Opera House / Old Glast Heim</strong><p>Farme Invoker's Ring, Zombie Slaughter, Job Rune e Temporal STR; Megingjard é uma alternativa.</p></div></div>
+    <div class="stop"><div class="lv">LV 124–145</div><div><strong>Death Castle</strong><p>Entre preparado. Megalodon Cards, White Knight Armor e Ravenous Beast Pendant fazem parte da preparação esperada.</p></div></div>
+    <div class="stop"><div class="lv">LV 145–150</div><div><strong>Reta final</strong><p>Dimensional Gorge, Thanatos Paradise or Jormungandr Lair.</p></div></div>
+  </div>
+</section>
+
+<section class="section" id="legend">
+  <div class="section-head"><div class="num">03 / MUDANÇA DE CLASSE</div><div><h2>Tornando-se Legend</h2><p class="lede">Chegue ao Job Lv 70 em Rachel Sanctuary, depois vá para Discastes Diel e siga a rota indicada pelo Vagabond NPC ao sul.</p></div></div>
+  <div class="gallery">
+    <img src="assets/image109.png" alt="Echoes of Morroc scene">
+    <img src="assets/image71.png" alt="Job progression scene">
+    <img src="assets/image103.png" alt="Vagabond NPC">
+    <img src="assets/image20.png" alt="Quest scene">
+    <img src="assets/image107.png" alt="Legend scene">
+  </div>
+  <div class="danger"><div class="kicker">NOTA DE SOBREVIVÊNCIA</div><strong>Se encontrar um Hatii, apenas corra.</strong></div>
+</section>
+
+<section class="section" id="stats">
+  <div class="section-head"><div class="num">04 / BUILD</div><div><h2>Não copie atributos. Resolva problemas.</h2><p class="lede">Exemplos de atributos ajudam, mas o guia deixa claro que você não deve copiar cegamente uma distribuição específica.</p></div></div>
+  <div class="grid g4">
+    <div class="card"><h3>STR</h3><p>Precisa de mais dano físico? Esta é sua principal resposta.</p></div>
+    <div class="card"><h3>LUK</h3><p>Use quando precisar de mais CRIT ou HIT. Seus equipamentos podem reduzir a quantidade necessária.</p></div>
+    <div class="card"><h3>VIT</h3><p>Aumente sobrevivência e HP quando a progressão começar a punir sua build.</p></div>
+    <div class="card"><h3>AGI</h3><p>Ajuda a controlar o consumo de Frenzy e melhora o conforto da velocidade de ataque.</p></div>
+  </div>
+  <div class="wisdom"><div class="kicker">SABEDORIA DA LEGEND</div><strong>Uma build de Legend não é uma receita. É um conjunto de problemas resolvidos.</strong></div>
+  <div class="card" style="margin-top:16px"><h3>Prioridade inicial de Skills</h3><p style="font-family:ui-monospace,monospace;color:#e3d7c9">Frenzy 1 → Blade Mastery 10 → Improve Defense 10 → Seven Winds 7</p><p>Depois disso, Improve SP Recovery ou Shadow Mastery são escolhas situacionais. Mantenha pelo menos 300 HP disponível para usar Frenzy.</p></div>
+</section>
+
+<section class="section" id="gear">
+  <div class="section-head"><div class="num">05 / EQUIPAMENTOS</div><div><h2>Checkpoints de Equipamentos</h2><p class="lede">Em vez de uma lista gigantesca de itens, a progressão é dividida em pontos nos quais você deve parar e perguntar: “Estou pronto para o próximo mapa?”</p></div></div>
+  <div class="grid g3">
+    <div class="card gear"><img src="assets/image99.png" alt="Orphan gear"><div class="body"><div class="slot">Checkpoint I · Início</div><h3>Orphan → Vagabond</h3><p><span class="priority must">MUST</span>Orphan Set, Dagger of the Orphan e Legacy of Coins. Familiar Cards como suporte inicial.</p></div></div>
+    <div class="card gear"><img src="assets/image53.png" alt="Mid gear"><div class="body"><div class="slot">Checkpoint II · Midgame</div><h3>Base do Vagabond</h3><p>Dracula Manteau, Evil Wing Ears, Arch Ring, Lightning Vortex e, posteriormente, Keris +7.</p></div></div>
+    <div class="card gear"><img src="assets/image82.png" alt="Weapon information"><div class="body"><div class="slot">Checkpoint III · Legend</div><h3>Lv 102+</h3><p>Avance para Murder Knife / Assassin's Dagger, Temporal STR, Invoker's Ring ou Megingjard.</p></div></div>
+  </div>
+  <div class="grid g2" style="margin-top:16px">
+    <div class="card"><h3>Antes de Frontier</h3><div class="check"><i>✓</i><span>Sustain confiável<small>As opções Drainliar / Dracula ajudam no início.</small></span></div><div class="check"><i>✓</i><span>CRIT / HIT suficiente<small>Ajuste LUK se estiver errando ataques demais.</small></span></div><div class="check"><i>✓</i><span>Atenção ao Reflect<small>Ignore Damage Reflection é valioso quando disponível.</small></span></div></div>
+    <div class="card"><h3>Antes de Death Castle</h3><div class="check"><i>✓</i><span>Ravenous Beast Pendant<small>O guia recomenda buscá-lo a partir do Lv 110.</small></span></div><div class="check"><i>✓</i><span>Megalodon Cards<small>Prepare-os antes de entrar no mapa.</small></span></div><div class="check"><i>✓</i><span>White Knight Armor<small>O autor prefere Meteor Golem a Minorous.</small></span></div></div>
+  </div>
+</section>
+
+<section class="section" id="endgame">
+  <div class="section-head"><div class="num">06 / ENDGAME</div><div><h2>Monte sua build para atingir metas, não para copiar screenshots.</h2><p class="lede">A seção de late game aponta para metas mensuráveis em vez de impor um único conjunto BIS obrigatório.</p></div></div>
+  <div class="stats">
+    <div class="stat"><b>20K+</b><span>Meta de HP</span></div>
+    <div class="stat gold"><b>135</b><span>CRIT para Jorm</span></div>
+    <div class="stat red"><b>147</b><span>CRIT para Rachel SS</span></div>
+    <div class="stat"><b>80–100%</b><span>Meta de DEF Pierce</span></div>
+  </div>
+  <div class="table-wrap" style="margin-top:18px"><table>
+    <thead><tr><th>Problema</th><th>O que priorizar</th><th>Exemplos do guia</th></tr></thead>
+    <tbody>
+      <tr><td>Precisa de CRIT</td><td>Total Crit Rate, Cards de CRIT</td><td>Gremlin, Baphomet Jr., Guiding Dagger options</td></tr>
+      <tr><td>Precisa de DEF Pierce</td><td>DEF Pierce até atingir a meta</td><td>Veins Ghoul, Doomfist, King Schmidt, Megingjard</td></tr>
+      <tr><td>Precisa de dano contra Boss</td><td>Modificadores contra Boss após atingir as metas principais</td><td>Abysmal Knight, Memory of Thanatos, Thanatos cards</td></tr>
+      <tr><td>Precisa de HP / resistência</td><td>Sobreviva antes de maximizar o DPS</td><td>Meteor Golem, Apocalypse Scale, mantos defensivos</td></tr>
+      <tr><td>Precisa de dano racial</td><td>Troque conforme o conteúdo</td><td>Megalodon, Earth Petite, Goblin King, Observation</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note"><div class="kicker">STATUS DO CONTEÚDO</div><strong>As seções específicas de equipamentos para Jormungandr Lair e Rachel SS estavam marcadas como incompletas no guia original.</strong> Esta página mantém apenas as metas, sem inventar builds ausentes.</div>
+</section>
+
+<section class="section" id="troubleshoot">
+  <div class="section-head"><div class="num">07 / DIAGNÓSTICO</div><div><h2>Por que estou morrendo?</h2><p class="lede">Um diagnóstico rápido para os problemas mais comuns de Legend.</p></div></div>
+  <div class="grid g2">
+    <div class="card"><h3>Estou errando ataques demais</h3><p>Confira LUK/HIT e sua necessidade de CRIT. Crit Shield pode fazer o alvo exigir mais CRIT do que você imagina.</p></div>
+    <div class="card"><h3>Estou morrendo muito rápido</h3><p>Seus equipamentos provavelmente estão atrasados em relação ao seu nível. Aumente HP, resistência ou a qualidade da armadura antes de avançar.</p></div>
+    <div class="card"><h3>Frenzy está difícil de sustentar</h3><p>Confira AGI, sustain e se seu HP é suficiente para suportar o consumo.</p></div>
+    <div class="card"><h3>Reflect está me matando</h3><p>Priorize uma opção com Ignore Damage Reflection onde o guia recomendar.</p></div>
+    <div class="card"><h3>Meu dano está baixo</h3><p>Confira primeiro CRIT, depois DEF Pierce e então modificadores de Boss/Race/Size. Não empilhe dano enquanto ainda estiver falhando em um requisito básico.</p></div>
+    <div class="card"><h3>Rachel SS está me destruindo</h3><p>O guia original deixa claro que isso exige tanto uma boa build quanto aprender as mecânicas.</p></div>
+  </div>
+</section>
+
+<section class="section faq" id="faq">
+  <div class="section-head"><div class="num">08 / FAQ</div><div><h2>FAQ da Legend</h2><p class="lede">As perguntas recorrentes organizadas em uma seção de consulta rápida.</p></div></div>
+  <details open><summary>Quanto de Crit Rate eu preciso?</summary><p>Você precisa de 100 de CRIT efetivo, mas monstros podem possuir Crit Shield. O guia usa LUK/5 como Crit Shield. Exemplo: um monstro com 200 LUK possui 40 de Crit Shield, aumentando sua necessidade prática de CRIT.</p></details>
+  <details><summary>Qual dagger vai na minha mão principal?</summary><p>Normalmente, a que tiver o maior ATK.</p></details>
+  <details><summary>Preciso deixar tudo Doomed?</summary><p>Não. O guia considera Cursed mais do que suficiente para a progressão normal.</p></details>
+  <details><summary>Como acesso as Distortions?</summary><p>Primeiro obtenha o Bifrost Mirror. Entre em uma Distortion a pé uma vez para obter seus Shards; depois disso, o Orb no Orphanage pode ser usado para teleportar.</p></details>
+  <details><summary>E se eu não conseguir gastar Skill Points depois da mudança de classe?</summary><p>Desequipe o Orphan Set. Ele concede níveis de Heal e pode fazer a interface de Skills parecer que esses pontos já estão comprometidos.</p></details>
+</section>
+</div>
+<footer class="footer"><strong>Caminho da Lenda</strong> · Edição web reorganizada com base no guia original de 39 páginas de Ashura. O conteúdo preserva intencionalmente a abordagem pessoal e focada em theorycraft do guia.</footer>
+</main>
+</div>
+<script>
+const links=[...document.querySelectorAll('nav a')];
+const sections=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id));}})},{rootMargin:'-20% 0px -70% 0px'});
+sections.forEach(s=>io.observe(s));
+</script>
+</body>
+</html>
